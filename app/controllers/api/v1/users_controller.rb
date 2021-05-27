@@ -1,5 +1,4 @@
 class Api::V1::UsersController < ApplicationController
-
 skip_before_action :authorized, only: [:create]
 
 
@@ -15,9 +14,9 @@ skip_before_action :authorized, only: [:create]
     def create
         user = User.create(user_params)
         if user.valid?
-           payload = {user_id: user.id}
-           token = encode_token(payload)
-           render json: {user: user, jwt: token}
+        payload = {user_id: user.id}
+        token = encode_token(payload)
+        render json: {user: user, jwt: token}
         else
             render json: {errors: "Please try again"}
     end
@@ -35,8 +34,8 @@ end
 
 
     private
-   def user_params
-   params.permit(:username, :password)
+    def user_params
+    params.require(:user).permit(:username, :password)
 end
 
 

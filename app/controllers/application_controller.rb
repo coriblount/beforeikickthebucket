@@ -21,10 +21,11 @@ class ApplicationController < ActionController::API
             JWT.decode(token,'my_secret', true, {algorithm: 'HS256'})
         rescue JWT::DecodeError
             []
+            end
         end
-      end
     end
-     
+    
+    
     def current_user
         if decoded_token
             user_id = decoded_token[0]['user_id']
@@ -33,7 +34,7 @@ class ApplicationController < ActionController::API
     end
 
     def logged_in?
-         !!current_user
+        !!current_user
     end
 
     def authorized

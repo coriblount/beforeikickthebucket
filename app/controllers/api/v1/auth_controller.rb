@@ -3,7 +3,6 @@ skip_before_action :authorized, only: :login
 
 
     def login
-        byebug
         user = User.find_by(username: auth_params[:username])
         if user && user.authenticate(auth_params[:password])
             payload = {user_id: user.id}
@@ -17,7 +16,8 @@ end
 def auto_login
     render json: @user
 end
-     
+
+
   def auth_params
     params.require(:auth).permit(:username, :password)
   end  

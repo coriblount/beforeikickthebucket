@@ -6,6 +6,9 @@ Rails.application.routes.draw do
       resources :users
       resources :trips
       resources :bucketlist_items
+      post "/login", to: "auth#login"
+      get "/auto_login", to: "auth#auto_login"
+      get "/profile", to: "users#profile"
     end
   end
 end

@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2021_05_20_185506) do
   create_table "bucketlist_items", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "location"
     t.integer "rating"
     t.integer "trip_id"
     t.datetime "created_at", precision: 6, null: false
@@ -30,6 +29,8 @@ ActiveRecord::Schema.define(version: 2021_05_20_185506) do
     t.string "destination"
     t.string "start_date"
     t.string "end_date"
+    t.boolean "visited", default: false
+    t.boolean "bucketlist", default: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -38,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_185506) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

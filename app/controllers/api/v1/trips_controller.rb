@@ -1,5 +1,6 @@
 class Api::V1::TripsController < ApplicationController
-    before_action :set_trip, only: [:show, :update, :destroy]
+    # before_action :set_trip, only: [:show, :create, :update, :destroy]
+    skip_before_action :authorized
 
     def index
         @trips = Trip.all
@@ -11,7 +12,7 @@ class Api::V1::TripsController < ApplicationController
         end
     
         def create
-            @trip = Trip.new(trip_param)
+            @trip = Trip.new(trip_params)
             if @trip.save
                 render json: @trip
             else
@@ -38,8 +39,8 @@ class Api::V1::TripsController < ApplicationController
         params.require(:trip).permit(:id, :name, :destination, :visited, :bucket_list)
     end
     
-    def set_trip
-        @trip = Trip.find(params[:id])
-    end
+    # def set_trip
+    #     @trip = Trip.find(params[:id])
+    # end
     
 end

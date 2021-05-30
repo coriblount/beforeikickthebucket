@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-skip_before_action :authorized, only: [:create]
+skip_before_action :authorized, only: [:create, :destroy]
 
 
     def profile
@@ -23,19 +23,19 @@ skip_before_action :authorized, only: [:create]
 end
 
 def show
-    user = User.find_by(id: params[:id])
+    user = User.find_by(params[:id])
     render json: @users
 end
 
 def destroy
-    @user.destroy
-render json: @user
+    user = User.destroy(user_params)
+    render json: @user
 end 
 
 
     private
     def user_params
-    params.require(:user).permit(:username, :password)
+    params.permit(:id, :username, :password)
 end
 
 

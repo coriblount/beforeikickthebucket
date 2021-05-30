@@ -17,9 +17,9 @@ user3 = User.create(username: "jane", password: "jane", image: "null")
 
 
 
-trip1 = Trip.create(name: "Explore Europe", destination: "Paris, France", start_date: "July 2022", end_date: "August 2022", user_id: user1.id)
-trip2 = Trip.create(name: "Explore Africa", destination: "Cape Town, South Africa", start_date: "Decemeber 2021", end_date: "January 2022", user_id: user2.id)
-trip3 = Trip.create(name: "Explore Rome", destination: "Piazza del Colosseo, Rome Italy", start_date: "August 2021", end_date: "August 2021", user_id: user3.id)
+trip1 = Trip.create(name: "Explore Europe", destination: "Paris, France", start_date: "July 2022", end_date: "August 2022", visited: false, bucketlist: false, user_id: user1.id)
+trip2 = Trip.create(name: "Explore Africa", destination: "Cape Town, South Africa", start_date: "Decemeber 2021", end_date: "January 2022", visited: false, bucketlist: false, user_id: user2.id)
+trip3 = Trip.create(name: "Explore Rome", destination: "Piazza del Colosseo, Rome Italy", start_date: "August 2021", end_date: "August 2021", visited: false, bucketlist: false, user_id: user3.id)
 
 
 bucketlist_item1 = BucketlistItem.create(name: "See the Eiffel Tower", description: "Tour, Shopping and Dining inside Eiffel Tower", rating: 8, trip_id: trip1.id)

@@ -1,8 +1,10 @@
 class Api::V1::BucketlistItemsController < ApplicationController
-before_action :set_trip
+# before_action :set_trip
+skip_before_action :authorized
 
  def index
-        @bucketlist_item = @trip.bucketlist_item
+  @bucketlist_item = BucketlistItem.all
+        # @bucketlist_item = @trip.bucketlist_item
         render json: @bucketlist_item
     end
 

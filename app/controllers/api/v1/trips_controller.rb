@@ -12,31 +12,27 @@ class Api::V1::TripsController < ApplicationController
         end
     
         def create
-            @trip = Trip.new(trip_params)
-            if @trip.save
+            @trip = Trip.create(trip_params)
                 render json: @trip
-            else
-                render json: {error: "cannot create trip" }
+            
         end
-    end
     
     def update
-        if @trip.update(trip_params)
-            @trip.save
+        @trip = Trip.find(params[:id])
+            @trip.update(trip_params)
+            # @trip.save
             render json: @trip
-        else
-            render json: {error: "cannot edit trip"}
-        end
     end
     
     def destroy
+        @trip = Trip.find_by(trip_params)
         @trip.destroy
         render json: @trip
     end
 
     private
     def trip_params
-        params.require(:trip).permit(:id, :name, :destination, :visited, :bucket_list)
+        params.require(:trip).permit(:id, :name, :destination, :visited, :bucketlist)
     end
     
     # def set_trip

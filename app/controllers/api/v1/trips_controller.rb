@@ -25,10 +25,12 @@ class Api::V1::TripsController < ApplicationController
     end
     
     def destroy
-        @trip = Trip.find_by(trip_params)
-        @trip.destroy
+        @trip = Trip.find(params[:id])
+        if @trip.present?
+            @trip.destroy
         render json: @trip
     end
+end
 
     private
     def trip_params
